@@ -1,4 +1,3 @@
-# Use a Python base image
 FROM python:3.10-slim
 
 WORKDIR /app
@@ -8,5 +7,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# Do NOT hardcode 5000
-CMD ["sh", "-c", "gunicorn --worker-class eventlet -w 1 -b 0.0.0.0:$PORT app:app"]
+# Back4App requires EXPOSE
+EXPOSE 5000
+
+# But runtime must use dynamic $PORT
+CMD ["sh", "-c", "gunicorn --worker-class eventlet -w 1 -b 0.0.0.0:${PORT:-5000} app:app"]

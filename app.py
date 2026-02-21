@@ -12,7 +12,7 @@ from flask_socketio import SocketIO, emit
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 app.config['SECRET_KEY'] = 'synappz-secret-key'
-socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
+socketio = SocketIO(app, cors_allowed_origins="*")
 
 MESSAGES_FILE = "messages.json"
 USERS_FILE = "users.json"

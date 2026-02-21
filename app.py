@@ -408,6 +408,6 @@ def handle_group_call_end(payload):
             socketio.emit('group_call_end', payload, room=sid)
 
 
-# if __name__ == "__main__":
-#     print("🚀 Starting Synappz server on http://localhost:5000")
-#     socketio.run(app, host="0.0.0.0", port=5000)
+if __name__ == "__main__":
+    print("🚀 Starting Synappz server on http://localhost:5000")
+    socketio.run(app, host="0.0.0.0", port=5000)
